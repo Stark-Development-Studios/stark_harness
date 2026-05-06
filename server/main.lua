@@ -8,9 +8,9 @@ if Config.VersionCheck then
     lib.versionCheck('AdamaStark-N7/stark_harness')
 end
 
--- local QBCore = exports['qb-core']:GetCoreObject()
+local QBCore = exports['qb-core']:GetCoreObject()
 
-local QBX = exports.qbx_core
+-- local QBX = exports.qbx_core
 
 lib.callback.register('stark_harness:server:GetHarnessInfo', function(source, plate, harnessInfo)
     if plate == nil then return end
@@ -32,13 +32,14 @@ end
 RegisterNetEvent('stark_harness:server:installHarness', function(harnessInfo, plate)
     local src = source
     if plate == nil then return end
-    -- local Player = QBCore.Functions.GetPlayer(src)
-    local Player = QBX:GetPlayer(src)
+    local Player = QBCore.Functions.GetPlayer(src)
+    -- local Player = QBX:GetPlayer(src)
     local result = MySQL.query.await('SELECT * FROM player_vehicles WHERE plate = ?', { plate })
     if result ~= nil and #(result) > 0 then
         if not Config.MechanicOnly then
             if harnessInfo ~= nil then
-                MySQL.update('UPDATE player_vehicles SET harness = ? WHERE plate = ?', { json.encode(harnessInfo), plate })
+                MySQL.update('UPDATE player_vehicles SET harness = ? WHERE plate = ?',
+                    { json.encode(harnessInfo), plate })
                 if Config.Inventory == 'qb' then
                     exports['qb-inventory']:RemoveItem(src, 'harness', 1, false)
                 elseif Config.Inventory == 'ps' then
@@ -68,7 +69,8 @@ RegisterNetEvent('stark_harness:server:installHarness', function(harnessInfo, pl
         else
             if (result[1].citizenid == Player.PlayerData.citizenid) then
                 if harnessInfo ~= nil then
-                    MySQL.update('UPDATE player_vehicles SET harness = ? WHERE plate = ?', { json.encode(harnessInfo), plate })
+                    MySQL.update('UPDATE player_vehicles SET harness = ? WHERE plate = ?',
+                        { json.encode(harnessInfo), plate })
                     if Config.Inventory == 'qb' then
                         exports['qb-inventory']:RemoveItem(src, 'harness', 1, false)
                     elseif Config.Inventory == 'ps' then
@@ -97,7 +99,8 @@ RegisterNetEvent('stark_harness:server:installHarness', function(harnessInfo, pl
                 end
             elseif (Player.PlayerData.job.type == Config.MechanicJobType) then
                 if harnessInfo ~= nil then
-                    MySQL.update('UPDATE player_vehicles SET harness = ? WHERE plate = ?', { json.encode(harnessInfo), plate })
+                    MySQL.update('UPDATE player_vehicles SET harness = ? WHERE plate = ?',
+                        { json.encode(harnessInfo), plate })
                     if Config.Inventory == 'qb' then
                         exports['qb-inventory']:RemoveItem(src, 'harness', 1, false)
                     elseif Config.Inventory == 'ps' then
@@ -186,8 +189,8 @@ end)
 RegisterNetEvent('stark_harness:server:removeHarness', function(plate)
     local src = source
     if plate == nil then return end
-    -- local Player = QBCore.Functions.GetPlayer(src)
-    local Player = QBX:GetPlayer(src)
+    local Player = QBCore.Functions.GetPlayer(src)
+    -- local Player = QBX:GetPlayer(src)
     local result = MySQL.query.await('SELECT * FROM player_vehicles WHERE plate = ?', { plate })
     if result ~= nil and #(result) > 0 then
         if (result[1].citizenid == Player.PlayerData.citizenid) then

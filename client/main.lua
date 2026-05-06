@@ -6,7 +6,7 @@ local Config = require 'shared.config'
 
 local QBCore = exports['qb-core']:GetCoreObject()
 
-local QBX = exports.qbx_core
+-- local QBX = exports.qbx_core
 
 RegisterNetEvent('stark_harness:client:installHarness', function(ItemData)
     local Player = PlayerPedId()
@@ -333,7 +333,7 @@ RegisterNetEvent('stark_harness:client:removeHarness', function()
                             disableCombat = true
                         }, {}, {}, {}, function() -- DONE
                             TriggerServerEvent('stark_harness:server:removeHarness', plate)
-                        end, function()       -- CANCELLED
+                        end, function()           -- CANCELLED
                             if Config.Notify == 'qb' then
                                 QBCore.Functions.Notify(locale('error.cancel_removal_description'), 'error')
                             elseif Config.Notify == 'ox' then
