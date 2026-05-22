@@ -1,11 +1,11 @@
 ---@diagnostic disable: lowercase-global
 
-if not lib.checkDependency('ox_lib', '3.33.0', true) then return end
+if not lib.checkDependency('ox_lib', '3.34.0', true) then return end
 
 local Config = require 'shared.config'
 
 if Config.VersionCheck then
-    lib.versionCheck('AdamaStark-N7/stark_harness')
+    lib.versionCheck('Stark-Development-Studios/stark_harness')
 end
 
 local QBCore = exports['qb-core']:GetCoreObject()

@@ -12,7 +12,7 @@ author 'Adama Stark'
 
 version '4.0.1'
 
-repository 'https://github.com/AdamaStark-N7/stark_harness'
+repository 'https://github.com/Stark-Development-Studios/stark_harness'
 
 description 'A Vehicle Harness Resource For FiveM'
 
