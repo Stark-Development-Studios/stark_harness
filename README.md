@@ -186,7 +186,6 @@ end
 3. ox_inventory
 
 # Dependencies
-1. ox_lib
-2. oxmysql
-3. qb-smallresources (QBCore)
-4. qbx_seatbelt (Qbox)
+1. [ox_lib](https://github.com/overextended/ox_lib/releases)
+2. [oxmysql](https://github.com/overextended/oxmysql/releases)
+3. [qb-smallresources](https://github.com/qbcore-framework/qb-smallresources)
