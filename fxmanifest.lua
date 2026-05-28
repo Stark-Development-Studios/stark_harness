@@ -10,7 +10,7 @@ name 'stark_harness'
 
 author 'Adama Stark'
 
-version '4.0.3'
+version '4.0.4'
 
 repository 'https://github.com/Stark-Development-Studios/stark_harness'
 
