@@ -1,6 +1,6 @@
 ---@diagnostic disable: lowercase-global
 
-if not lib.checkDependency('ox_lib', '3.37.0', true) then return end
+if not lib.checkDependency('ox_lib', '3.38.0', true) then return end
 
 local Config = require 'shared.config'
 
